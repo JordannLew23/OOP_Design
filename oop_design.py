@@ -1,5 +1,7 @@
 import random
 
+print("--------------Welcome 1v1 Game of Basketball!--------------")
+
 class Player:
     def __init__(self, name, position):
         self.name = name
@@ -10,6 +12,8 @@ class Player:
 
 class PlayerWithFavoriteColor(Player):
     def __init__(self, name, position, favorite_color):
+        self.name = name
+        self.position = position
         self.favorite_color = favorite_color
 
     def __str__(self):
@@ -48,12 +52,11 @@ class Game:
         print(f"Score: {self.team1.name} {self.team1_score} - {self.team2_score} {self.team2.name}")
 
     def end_game(self):
-        print("Game Over!")
         self.display_score()
         if self.team1_score > self.team2_score:
-            print(f"{self.team1.name} wins!")
+            print(f"{self.team1.name} win!")
         elif self.team1_score < self.team2_score:
-            print(f"{self.team2.name} wins!")
+            print(f"{self.team2.name} win!")
         else:
             print("It's a tie!")
 
@@ -111,4 +114,23 @@ basketball_game.score(team2,random.randint(2,40))
 
 
 # End the game and display the winner or tie
+
+
 basketball_game.end_game()
+while True:
+    play_again = input("Do you want to play again?  Yes/No: ").lower()
+    if play_again == "yes":
+        basketball_game.team1_score = 0
+        basketball_game.team1_score = 0
+
+        basketball_game.score(team1,random.randint(2,40))
+        basketball_game.score(team2,random.randint(2,40))
+
+        basketball_game.display_score()
+
+    elif play_again == "no":
+        print("----------Thank you for playing. Goodybye!----------")
+        break
+
+    else:
+        print("----------Invalid Input! Enter Yes or No----------")
